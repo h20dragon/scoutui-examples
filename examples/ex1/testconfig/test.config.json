@@ -1,27 +1,23 @@
 {
-  "Project": "Example",
+  "Project": "ScoutUI.Example",
   "Version": "1.00",
-  "Description": "Example - CarMax",
+  "Description": "Example - ScoutUI",
 
   "browser": "chrome",
 
   "eyes": {
-    "title": "Example - CarMax",
+    "title": "Example - ScoutUI",
     "viewport": "1024x718",
     "app": "10-16"
   },
 
-  "host": "http://www.carmax.com",
-  "dut": "../commands/home.command.yml",
-  "dut2": "../commands/commands.yml",
+  "host": "https://stark-bastion-95510.herokuapp.com/playground",
+  "dut": "../commands/simple.yml",
+  "dut2": "../commands/simple2.yml",
 
 
   "user_vars": {
-    "Search_Me": "BMW M3",
-    "View_Tickets_Link": "page(main_nav).get(ViewTicketsLink)",
-    "WhyCarMax": "page(home).get(whyCarMax)",
-
-    "firstname": "Elvis",
+    "firstname": "Blah",
 
     "MyMake": "Porsche",
     "make_aut": "file(porsche.json)",
