@@ -1,0 +1,10 @@
+{
+   "obstacle": {
+
+    "tinymce": {
+      "locator" : "//*[@id='tinymce']",
+      "vislble_when": "always"
+    }
+
+  }
+}
