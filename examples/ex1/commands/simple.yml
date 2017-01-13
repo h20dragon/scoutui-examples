@@ -1,0 +1,121 @@
+page:
+  name: Load ScoutUI Playground
+  description: Navigate to a URL
+  action: navigate(https://stark-bastion-95510.herokuapp.com/playground)
+  snapit: true
+---
+page:
+  name: Highlight and TAB until we find our target
+  description: Keep highlighting the active element, then TAB to next element until target element is the focus.
+  do:
+    - focused.Highlight
+    - press(__TAB__)
+  until:
+    - focused(css=#password)
+  whenPassed:
+    - type(focused, ScoutUI Example)
+---
+page:
+  name: Click
+  description: Sets focus back to the comment textarea
+  action: type(css=#comment, VH test)
+---
+page:
+  reqid: VH
+  name: Click Van Halen
+  do:
+    - focused.Highlight
+    - focused.Hover
+    - focused.Click
+    - press(__TAB__)
+  until:
+   - focused(//button[text()='Van Halen'])
+  whenPassed:
+   - click(//button[text()='Van Halen'])
+  asserts:
+   - isText(css=#echo)=Van Halen
+---
+page:
+  name: Pause after VH click
+  action: pause
+  skip: true
+---
+page:
+  action: click(css=#comment)
+---
+page:
+  reqid: LedZep
+  do:
+   - press(__TAB__)
+   - focused.Click
+  until:
+   - focused(//button[text()='Led Zeppelin'])
+  asserts:
+   - focused(//button[text()='Led Zeppelin']
+   - isText(//a[@id='echo'])=Led Zeppelin
+---
+page:
+  reqid: Select
+  name: Select
+  action: select(css=#CarList, Audi)
+  asserts:
+   - isText(css=#CarList)=Audi
+---
+page:
+  action: click(//button[text()='Led Zeppelin'])
+---
+page:
+  skip: false
+  do:
+    - press(__TAB__)
+  until:
+    - focused(css=#CarList)
+  whenPassed:
+    - select(css=#CarList, Volvo)
+---
+page:
+  action: click(//select[@class='chzn-select'])
+  do:
+    - focused.Type(Es)
+---
+page:
+  name: Select Dutch
+  action: pause
+  skip: false
+---
+page:
+  skip: true
+  name: Select Lang
+  do:
+   - focused.Highlight
+   - focused.Hover
+#  - focused.Click
+   - press(__TAB__)
+  until:
+   - focused(//select[@class='chzn-select'])
+  whenPassed:
+   - click(//select[@class='chzn-select'])
+   - press(__DOWN__)
+   - focused.Click
+   - press(__DOWN__)
+---
+page:
+  skip: true
+  name: Pause after Select Language
+  action: pause
+  skip: true
+---
+page:
+  skip: true
+  name: Pick Lang
+  do:
+    - focused.Highlight
+    - focused.Hover
+    - press(__DOWN__)
+  until:
+    - focused.Value(Norsk)
+---
+page:
+  name: Pause before Exit
+  action: pause
+  skip: false
